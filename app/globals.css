@@ -257,3 +257,70 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
 
 @keyframes scanVehicleMobile { 0%,100% { opacity: .15; transform: translateY(12px); } 50% { opacity: 1; transform: translateY(150px); } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+
+/* Chinese typography needs positive tracking; the display styles above are tuned for Latin glyphs. */
+html[lang="zh-CN"] body {
+  font-family: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", "Source Han Sans SC", "Segoe UI", sans-serif;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+
+html[lang="zh-CN"] .hero-copy h1,
+html[lang="zh-CN"] .detail-title h1 {
+  letter-spacing: .015em;
+  line-height: 1.2;
+  word-break: keep-all;
+}
+
+html[lang="zh-CN"] .section-intro h2,
+html[lang="zh-CN"] .principle-grid h3,
+html[lang="zh-CN"] .content-card h2,
+html[lang="zh-CN"] .next-page strong {
+  letter-spacing: .025em;
+  line-height: 1.42;
+  word-break: keep-all;
+}
+
+html[lang="zh-CN"] .hero-summary,
+html[lang="zh-CN"] .detail-title > p:last-child,
+html[lang="zh-CN"] .content-card p,
+html[lang="zh-CN"] .content-card li,
+html[lang="zh-CN"] .principle-grid p,
+html[lang="zh-CN"] .site-footer p {
+  letter-spacing: .035em;
+  line-height: 1.9;
+  word-break: normal;
+}
+
+html[lang="zh-CN"] .nav-group > button,
+html[lang="zh-CN"] .nav-dropdown a,
+html[lang="zh-CN"] .mobile-group > button,
+html[lang="zh-CN"] .mobile-links a,
+html[lang="zh-CN"] .button,
+html[lang="zh-CN"] .stage-line span {
+  letter-spacing: .025em;
+  line-height: 1.55;
+}
+
+html[lang="zh-CN"] .eyebrow,
+html[lang="zh-CN"] .dropdown-label,
+html[lang="zh-CN"] .card-eyebrow,
+html[lang="zh-CN"] .stat-grid p,
+html[lang="zh-CN"] .brand-name small {
+  letter-spacing: .09em;
+  line-height: 1.65;
+}
+
+@media (max-width: 620px) {
+  html[lang="zh-CN"] .hero-copy h1,
+  html[lang="zh-CN"] .detail-title h1 {
+    font-size: clamp(36px, 10.8vw, 46px);
+    line-height: 1.24;
+  }
+
+  html[lang="zh-CN"] .content-card h2,
+  html[lang="zh-CN"] .section-intro h2 {
+    font-size: 28px;
+    line-height: 1.48;
+  }
+}
