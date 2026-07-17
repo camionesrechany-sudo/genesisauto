@@ -3,8 +3,8 @@ import "./globals.css";
 import { LanguageProvider } from "./components/LanguageProvider";
 
 const faviconPath = process.env.GITHUB_PAGES === "true"
-  ? "/genesisauto/favicon.svg"
-  : "/favicon.svg";
+  ? "/genesisauto/favicon.svg?v=2"
+  : "/favicon.svg?v=2";
 
 export const metadata: Metadata = {
   title: {
