@@ -155,8 +155,16 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
   min-height: 720px;
   padding: 74px 0 70px;
 }
-.factory-atmosphere { inset: 0; overflow: hidden; pointer-events: none; position: absolute; }
-.factory-atmosphere::before { background: linear-gradient(90deg, transparent, rgba(72,217,232,.08), transparent); content: ""; height: 1px; left: 0; position: absolute; top: 24%; width: 100%; }
+.factory-atmosphere { inset: -8% -6%; overflow: hidden; pointer-events: none; position: absolute; z-index: 0; }
+.factory-atmosphere::before { background: linear-gradient(90deg, transparent, rgba(72,217,232,.08), transparent); content: ""; height: 1px; left: 0; position: absolute; top: 29%; width: 100%; }
+.factory-atmosphere::after {
+  background:
+    radial-gradient(ellipse at 77% 49%, rgba(48,143,159,.18), rgba(25,77,88,.07) 34%, transparent 67%),
+    linear-gradient(90deg, transparent 48%, rgba(72,217,232,.035) 72%, transparent 100%);
+  content: "";
+  inset: 0;
+  position: absolute;
+}
 .factory-atmosphere i { background: linear-gradient(180deg, rgba(145,163,173,.16), transparent); height: 62%; position: absolute; top: 0; width: 1px; }
 .factory-atmosphere i:nth-child(1) { left: 8%; }.factory-atmosphere i:nth-child(2) { left: 36%; }.factory-atmosphere i:nth-child(3) { right: 37%; }.factory-atmosphere i:nth-child(4) { right: 7%; }
 .hero-copy { position: relative; z-index: 4; }
@@ -178,19 +186,25 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
 
 .factory-scene {
   aspect-ratio: 1.18;
-  background:
-    radial-gradient(circle at 50% 52%, rgba(53,134,150,.2), transparent 38%),
-    linear-gradient(90deg, rgba(72,217,232,.025), transparent 28%, transparent 72%, rgba(72,217,232,.025)),
-    linear-gradient(180deg, rgba(16,24,27,.92), rgba(5,8,9,.86));
-  border: 1px solid var(--line-strong);
-  box-shadow: 0 35px 100px rgba(0,0,0,.42), inset 0 0 80px rgba(48,114,126,.06);
+  background: transparent;
   isolation: isolate;
   min-height: 490px;
   overflow: hidden;
   position: relative;
+  z-index: 2;
 }
-.factory-scene::before { background-image: linear-gradient(rgba(72,217,232,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(72,217,232,.055) 1px, transparent 1px); background-size: 38px 38px; content: ""; inset: 0; mask-image: linear-gradient(#000, transparent 88%); position: absolute; }
-.factory-scene::after { animation: cellSweep 12s linear infinite; background: linear-gradient(180deg, transparent, rgba(72,217,232,.055), rgba(72,217,232,.16), transparent); content: ""; height: 34%; left: 0; opacity: 0; pointer-events: none; position: absolute; right: 0; top: -34%; z-index: 7; }
+.factory-scene::before {
+  background:
+    radial-gradient(circle at 50% 52%, rgba(53,134,150,.17), transparent 42%),
+    linear-gradient(rgba(72,217,232,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(72,217,232,.05) 1px, transparent 1px);
+  background-size: auto, 38px 38px, 38px 38px;
+  content: "";
+  inset: -5%;
+  mask-image: radial-gradient(ellipse at center, #000 0 48%, rgba(0,0,0,.72) 62%, transparent 84%);
+  position: absolute;
+}
+.factory-scene::after { animation: cellSweep 12s linear infinite; background: linear-gradient(180deg, transparent, rgba(72,217,232,.055), rgba(72,217,232,.16), transparent); content: ""; height: 34%; left: 4%; mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent); opacity: 0; pointer-events: none; position: absolute; right: 4%; top: -34%; z-index: 7; }
 .factory-hud { align-items: center; color: #7f929b; display: flex; font-family: Consolas, monospace; font-size: 8px; letter-spacing: .12em; position: absolute; z-index: 8; }
 .hud-top { left: 24px; right: 24px; top: 22px; }.hud-top span { color: #d3e5e8; margin-right: auto; }.hud-top i { background: var(--green); box-shadow: 0 0 9px var(--green); height: 5px; margin-right: 7px; width: 5px; }
 .hud-bottom { bottom: 24px; justify-content: space-between; left: 24px; right: 24px; }.hud-bottom b { color: var(--amber); font-weight: 650; }.hud-bottom span { color: #758991; }
@@ -209,7 +223,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
 .assembly-node { animation: nodeLock 12s ease-in-out infinite; background: var(--amber); box-shadow: 0 0 12px rgba(255,177,74,.8); height: 5px; position: absolute; width: 5px; z-index: 8; }.node-one { bottom: 42%; left: 21%; }.node-two { bottom: 34%; left: 50%; }.node-three { bottom: 42%; right: 20%; }
 .scan-line { animation: scanAssembledVehicle 12s ease-in-out infinite; background: linear-gradient(90deg, transparent, var(--cyan), transparent); box-shadow: 0 0 22px rgba(72,217,232,.78); height: 2px; left: -2%; opacity: 0; position: absolute; top: 0; width: 104%; z-index: 9; }
 .completion-field { animation: completionField 12s ease-in-out infinite; border: 1px solid rgba(93,243,173,.38); border-radius: 50%; height: 112%; left: 10%; opacity: 0; pointer-events: none; position: absolute; top: -8%; width: 80%; z-index: 1; }.completion-field::before, .completion-field::after { border: 1px solid rgba(72,217,232,.14); border-radius: 50%; content: ""; inset: 8%; position: absolute; }.completion-field::after { inset: 22%; }.completion-field > i { background: var(--green); box-shadow: 0 0 10px rgba(93,243,173,.8); height: 4px; position: absolute; width: 4px; }.completion-field > i:first-child { left: 9%; top: 24%; }.completion-field > i:last-child { bottom: 17%; right: 13%; }
-.factory-floor { bottom: 0; left: 8%; perspective: 240px; position: absolute; right: 8%; top: 61%; transform: rotateX(62deg); z-index: 0; }.factory-floor::before { background-image: linear-gradient(rgba(108,145,155,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(108,145,155,.16) 1px, transparent 1px); background-size: 36px 32px; content: ""; inset: 0; position: absolute; }.factory-floor i { background: var(--amber); bottom: 0; height: 3px; opacity: .35; position: absolute; width: 3px; }
+.factory-floor { bottom: 0; left: 5%; perspective: 240px; position: absolute; right: 5%; top: 61%; transform: rotateX(62deg); z-index: 0; }.factory-floor::before { background-image: linear-gradient(rgba(108,145,155,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(108,145,155,.16) 1px, transparent 1px); background-size: 36px 32px; content: ""; inset: 0; mask-image: radial-gradient(ellipse at 50% 18%, #000 0 38%, transparent 82%); position: absolute; }.factory-floor i { background: var(--amber); bottom: 0; height: 3px; opacity: .35; position: absolute; width: 3px; }
 .assembly-sequence { bottom: 66px; display: grid; gap: 12px; grid-template-columns: repeat(4,1fr); left: 24px; position: absolute; right: 24px; z-index: 10; }.assembly-sequence::after { background: rgba(145,163,173,.16); bottom: -12px; content: ""; height: 1px; left: 0; position: absolute; right: 0; }.assembly-sequence > span { align-items: center; color: #526169; display: flex; font-family: Consolas, monospace; font-size: 7px; gap: 7px; letter-spacing: .1em; white-space: nowrap; }.assembly-sequence > span > i { background: #334047; height: 4px; width: 4px; }.sequence-body { animation: stageBody 12s linear infinite; }.sequence-pack { animation: stagePack 12s linear infinite; }.sequence-marry { animation: stageMarriage 12s linear infinite; }.sequence-eol { animation: stageEol 12s linear infinite; }.sequence-progress { animation: sequenceProgress 12s cubic-bezier(.55,.05,.25,1) infinite; background: linear-gradient(90deg, var(--cyan), var(--green)); bottom: -12px; box-shadow: 0 0 10px rgba(72,217,232,.45); height: 1px; left: 0; position: absolute; transform-origin: left; width: 100%; z-index: 2; }
 .weld-spark { animation: assemblySpark 12s linear infinite; background: var(--amber); box-shadow: 0 0 9px var(--amber); height: 3px; opacity: 0; position: absolute; width: 3px; z-index: 9; }.spark-one { left: 31%; top: 52%; }.spark-two { animation-delay: .18s; right: 28%; top: 49%; }.spark-three { animation-delay: .36s; right: 35%; top: 56%; }
 
